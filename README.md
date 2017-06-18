@@ -1,2 +1,3 @@
 # HadoopMapReduceExample
 Hadoop MapReduce 算法模式的例子总结
+总结MapReduce计算框架的几种常见模式
