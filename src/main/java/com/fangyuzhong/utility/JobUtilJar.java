@@ -13,15 +13,28 @@ import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
 /**
+ *在开发环境中，如Eclipse、IDEA中直接提交MR作业到Hadoop集群，辅助类<p>
+ * 将编译生成的Class 直接打包为Jar<p>
  * Created by fangyuzhong on 17-6-17.
  */
 public class JobUtilJar
 {
+    /**
+     *开发环境中，输出Hadoop-MR的jar包路径设置
+     */
+    public static final String outJarPath="target/classes";
 
-    // To declare global field
+    /**
+     * 定义classPath列表
+     */
     private static List<URL> classPath = new ArrayList<URL>();
 
-    // To declare method
+    /**
+     * 创建临时jar
+     * @param root
+     * @return
+     * @throws IOException
+     */
     public static File createTempJar(String root) throws IOException
     {
         if (!new File(root).exists())
@@ -75,6 +88,10 @@ public class JobUtilJar
         }
     }
 
+    /**
+     * 获取类加载器
+     * @return
+     */
     public static ClassLoader getClassLoader()
     {
         ClassLoader parent = Thread.currentThread().getContextClassLoader();
@@ -90,6 +107,10 @@ public class JobUtilJar
         return new URLClassLoader(classPath.toArray(new URL[0]), parent);
     }
 
+    /**
+     *
+     * @param component
+     */
     public static void addClasspath(String component)
     {
 

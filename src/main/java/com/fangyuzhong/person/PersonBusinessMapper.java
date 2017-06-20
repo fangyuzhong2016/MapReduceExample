@@ -33,12 +33,12 @@ public class PersonBusinessMapper extends Mapper<Object,Text,Text,PersonBusiness
     {
         String[] valueSplits = value.toString().split(",");
         LOG.info(valueSplits.length);
-        if(valueSplits.length>=31)
+        if(valueSplits.length>=7)
         {
             String personName = valueSplits[0];
-            String personId = valueSplits[4];
+            String personId = valueSplits[1];
             String personVistTime = "";
-            personVistTime = valueSplits[31];
+            personVistTime = valueSplits[5];
             Date personVistDate = new Date();
             if (personVistTime != "")
             {
@@ -49,8 +49,7 @@ public class PersonBusinessMapper extends Mapper<Object,Text,Text,PersonBusiness
                 {
                     LOG.fatal("时间转换错误", ex);
                 }
-            }
-            else
+            } else
             {
                 personVistTime = personVistDate.toString();
             }
@@ -62,7 +61,6 @@ public class PersonBusinessMapper extends Mapper<Object,Text,Text,PersonBusiness
             outId.set(personId);
             context.write(outId, personBusiness);
         }
-
     }
 
 }
