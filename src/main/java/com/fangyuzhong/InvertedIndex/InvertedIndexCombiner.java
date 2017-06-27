@@ -17,9 +17,16 @@ public  class InvertedIndexCombiner extends Reducer<AddressKeyWord,Text,AddressK
         int sum = 0;
         for (Text value : values)
         {
-            sum += Integer.parseInt(value.toString());
-        }
+            if(value==null||value.toString()=="") continue;
+            try
+            {
+                sum += Integer.parseInt(value.toString());
+            }
+           catch (Exception ex)
+           {
 
+           }
+        }
         context.write(key, new Text(key.getDescription()+ ":" + sum));
     }
 }
