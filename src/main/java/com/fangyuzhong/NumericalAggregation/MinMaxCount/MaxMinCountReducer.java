@@ -1,4 +1,4 @@
-package com.fangyuzhong.NumericalAggregation.NumericalMinMaxCount;
+package com.fangyuzhong.NumericalAggregation.MinMaxCount;
 
 import com.fangyuzhong.NumericalAggregation.NumbericalObject;
 import org.apache.hadoop.io.Text;

@@ -1,6 +1,5 @@
-package com.fangyuzhong.NumericalAggregation.NumericalMinMaxCount;
+package com.fangyuzhong.NumericalAggregation.MinMaxCount;
 
-import com.fangyuzhong.InvertedIndex.*;
 import com.fangyuzhong.NumericalAggregation.NumbericalObject;
 import com.fangyuzhong.utility.JobUtilJar;
 import org.apache.hadoop.conf.Configuration;

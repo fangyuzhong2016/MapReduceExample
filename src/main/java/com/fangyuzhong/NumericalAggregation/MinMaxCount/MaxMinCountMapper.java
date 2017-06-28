@@ -1,4 +1,4 @@
-package com.fangyuzhong.NumericalAggregation.NumericalMinMaxCount;
+package com.fangyuzhong.NumericalAggregation.MinMaxCount;
 
 import com.fangyuzhong.NumericalAggregation.NumbericalObject;
 import org.apache.hadoop.io.Text;
@@ -36,7 +36,7 @@ public class MaxMinCountMapper extends Mapper<Object, Text, Text, NumbericalObje
         String[] valueSplits = value.toString().split(",");
         if(valueSplits.length>=4)
         {
-            String struUserID = valueSplits[1];
+            String strUserID = valueSplits[1];
             String strUserTime = valueSplits[2];
             Date createDate = new Date();
             try
@@ -50,7 +50,7 @@ public class MaxMinCountMapper extends Mapper<Object, Text, Text, NumbericalObje
             numbericalObject.setMin(createDate);
             numbericalObject.setCount(1);
 
-            userID.set(struUserID);
+            userID.set(strUserID);
             context.write(userID,numbericalObject);
         }
     }
