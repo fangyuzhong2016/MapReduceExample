@@ -38,7 +38,7 @@ public class MaxMinCountDrive extends Configured implements Tool
         //获取连接hadoop集群配置，默认加载当前线程相关配置
         Configuration conf = new Configuration(true);
         Job job = Job.getInstance(conf, "MaxMinCount Hadoop Job");
-        job.setJarByClass(InvertedIndexDrive.class);
+        job.setJarByClass(MaxMinCountDrive.class);
         ((JobConf) job.getConfiguration()).setJar(jarFile.toString());
         //设置Job的map和Reduce类
         job.setMapperClass(MaxMinCountMapper.class);
