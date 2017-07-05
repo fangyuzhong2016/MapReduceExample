@@ -4,6 +4,7 @@ import com.fangyuzhong.utility.JobUtilJar;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
@@ -72,7 +73,7 @@ public class TopFilterNDrive extends Configured implements Tool
     {
         String[] otherArgs = new String[2];
         // 计算原文件目录，需提前在里面存入文件
-        otherArgs[0] = "hdfs://192.168.2.2:8020/persondata/";
+        otherArgs[0] = "hdfs://192.168.2.2:8020/top/";
         // 计算后的计算结果存储目录，每次程序执行的结果目录不能相同，所以添加时间标签
         String time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         otherArgs[1] = "hdfs://192.168.2.2:8020/test_out/" + time;

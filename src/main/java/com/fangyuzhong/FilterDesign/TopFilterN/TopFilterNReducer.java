@@ -38,7 +38,13 @@ public class TopFilterNReducer extends Reducer<NullWritable, User, NullWritable,
     {
         for(User var:values)
         {
-            reduceTopN.put(var.getAge(),var);
+            User outUser = new User();
+            outUser.setId(var.getId());
+            outUser.setPersonName(var.getPersonName());
+            outUser.setGender(var.getGender());
+            outUser.setBirthday(var.getBirthday());
+            outUser.setAge(var.getAge());
+            reduceTopN.put(var.getAge(),outUser);
             if(reduceTopN.size()>N)
             {
              reduceTopN.remove(reduceTopN.firstKey());

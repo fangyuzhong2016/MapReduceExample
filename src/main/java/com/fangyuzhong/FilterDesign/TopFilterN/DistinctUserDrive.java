@@ -50,8 +50,8 @@ public class DistinctUserDrive extends Configured implements Tool
 
 
         //设置一下Map输出类型
-        job.setMapOutputKeyClass(User.class);
-        job.setMapOutputValueClass(NullWritable.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(User.class);
 
         //设置输出类型
         job.setOutputKeyClass(User.class);

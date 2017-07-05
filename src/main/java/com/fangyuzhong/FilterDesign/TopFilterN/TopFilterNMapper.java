@@ -16,7 +16,6 @@ public class TopFilterNMapper extends Mapper<Object, Text, NullWritable, User>
 
     private SortedMap<Integer,User> top10Person = new TreeMap();
     private int N =10;//默认前10个
-    private User outUser = new User();
 
     /**
      * 获取前N的值，由作业驱动器设置
@@ -61,7 +60,8 @@ public class TopFilterNMapper extends Mapper<Object, Text, NullWritable, User>
             {
 
             }
-//            if(personAge==0) return;
+            if(personAge<=0||personAge>=100) return;
+            User outUser = new User();
             outUser.setId(id);
             outUser.setPersonName(name);
             outUser.setGender(gender);

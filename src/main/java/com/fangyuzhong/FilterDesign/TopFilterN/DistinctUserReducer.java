@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by fangyuzhong on 17-7-4.
  */
-public class DistinctUserReducer extends Reducer<User, NullWritable, User,NullWritable >
+public class DistinctUserReducer extends Reducer<Text, User, User,NullWritable >
 {
     /**
      * reduce函数
@@ -21,9 +21,21 @@ public class DistinctUserReducer extends Reducer<User, NullWritable, User,NullWr
      * @throws InterruptedException
      */
     @Override
-    public void reduce(User key, Iterable<NullWritable> values, Context context)
+    public void reduce(Text key, Iterable<User> values, Context context)
             throws InterruptedException, IOException
     {
-       context.write(key,NullWritable.get());
+        User outUser =null;
+        for(User var:values)
+        {
+            if(var.getId().equals(key.toString()))
+            {
+                outUser=var;
+                break;
+            }
+        }
+        if(outUser!=null)
+        {
+            context.write(outUser, NullWritable.get());
+        }
     }
 }
