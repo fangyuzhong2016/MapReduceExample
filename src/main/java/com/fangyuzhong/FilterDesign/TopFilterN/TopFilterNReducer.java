@@ -13,7 +13,7 @@ import java.util.TreeMap;
  */
 public class TopFilterNReducer extends Reducer<NullWritable, User, NullWritable, User>
 {
-   private SortedMap<Integer,User> reduceTopN = new TreeMap<>();
+   private SortedMap<Integer,User> reduceTopN = new TreeMap();
     private int N =10;
 
     @Override
